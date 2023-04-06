@@ -1,7 +1,4 @@
 import express from "express";
-// import HelloController from "./controllers/hello-controller.js";
-// import UserController from "./controllers/users/users-controller.js";
-// import TuitsController from "./controllers/tuits/tuits-controller.js";
 // import cors from "cors";
 import mongoose from "mongoose";
 import petfinder from "@petfinder/petfinder-js";
@@ -20,7 +17,7 @@ client.organization.search({ location: "Seattle, WA" }).then((response) => {
   console.log(response.data);
 });
 // app.use(cors());
-// app.use(express.json());
+app.use(express.json());
 // TuitsController(app);
 // HelloController(app);
 // UserController(app);
