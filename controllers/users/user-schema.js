@@ -7,8 +7,9 @@ const userSchema = mongoose.Schema(
     name: String,
     email: String,
     location: String,
+    courts: Array,
   },
-  { collection: "tuits" }
+  { collection: "userInfo" }
 );
 
 export default userSchema;

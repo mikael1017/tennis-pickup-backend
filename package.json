@@ -24,6 +24,7 @@
   "homepage": "https://github.com/mikael1017/dog-shelter-backend#readme",
   "dependencies": {
     "@petfinder/petfinder-js": "^1.0.6",
+    "axios": "^1.3.5",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongoose": "^7.0.3"
