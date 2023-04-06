@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "dog-shelter-backend",
   "version": "1.0.0",
   "description": "Node.js Backend server for the dog shelter web app",
@@ -20,5 +21,12 @@
   "bugs": {
     "url": "https://github.com/mikael1017/dog-shelter-backend/issues"
   },
-  "homepage": "https://github.com/mikael1017/dog-shelter-backend#readme"
+  "homepage": "https://github.com/mikael1017/dog-shelter-backend#readme",
+  "dependencies": {
+    "@petfinder/petfinder-js": "^1.0.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3"
+  },
+  "start": "node app.js"
 }
