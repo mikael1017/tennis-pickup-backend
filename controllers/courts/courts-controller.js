@@ -1,50 +1,36 @@
-import people from "./users.js";
-let users = people;
+import * as courtsDao from "./courts-dao.js";
 
 const CourtsController = (app) => {
-  app.get("/api/courts", findUsers);
-  app.get("/api/courts/:cid", findUserById);
-  app.post("/api/users", createUser);
-  app.delete("/api/users/:cid", deleteUser);
-  app.put("/api/users/:cid", updateUser);
+  app.get("/api/courts/city/:city", findCourtsByCity);
+  app.get("/api/courts/state/:state", findCourtsByState);
+  app.get("/api/courts/zip/:zip", findCourtsByZip);
+  app.post("/api/courts", addCourt);
 };
 
-const findUsers = (req, res) => {
-  const type = req.query["type"];
-  if (type) {
-    const usersOfType = users.filter((u) => u.type === type);
-    res.json(usersOfType);
-    return;
-  }
-  res.json(users);
+const findCourtsByCity = async (req, res) => {
+  // console.log(req.params);
+  const city = req.params["city"];
+  // console.log(city);
+  const courts = await courtsDao.findCourtsByCity(city);
+  res.json(courts);
 };
 
-const findUserById = (req, res) => {
-  const userId = req.params["uid"];
-  const user = users.find((u) => u._id === userId);
-  res.json(user);
+const findCourtsByZip = async (req, res) => {
+  const zip = req.query["zip"];
+  const courts = await courtsDao.findCourtsByZip(zip);
+  res.json(courts);
 };
 
-const createUser = (req, res) => {
-  const newUser = req.body;
-  newUser._id = new Date().getTime() + "";
-  users.push(newUser);
-  res.json(newUser);
+const findCourtsByState = async (req, res) => {
+  const state = req.query["state"];
+  const courts = await courtsDao.findCourtsByState(state);
+  res.json(courts);
 };
 
-const deleteUser = (req, res) => {
-  const userId = req.params["uid"];
-  users = users.filter((usr) => usr._id !== userId);
+const addCourt = (req, res) => {
+  const newCourt = req.body;
+  courtsDao.addCourt(newCourt);
   res.sendStatus(200);
 };
 
-const updateUser = (req, res) => {
-  const userId = req.params["uid"];
-  const updates = req.body;
-  users = users.map((usr) =>
-    usr._id === userId ? { ...usr, ...updates } : usr
-  );
-  res.sendStatus(200);
-};
-
-export default UserController;
+export default CourtsController;
