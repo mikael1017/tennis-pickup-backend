@@ -1,0 +1,24 @@
+{
+  "name": "dog-shelter-backend",
+  "version": "1.0.0",
+  "description": "Node.js Backend server for the dog shelter web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikael1017/dog-shelter-backend.git"
+  },
+  "keywords": [
+    "Node",
+    "REST",
+    "Server"
+  ],
+  "author": "Jaewoo Cho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikael1017/dog-shelter-backend/issues"
+  },
+  "homepage": "https://github.com/mikael1017/dog-shelter-backend#readme"
+}
