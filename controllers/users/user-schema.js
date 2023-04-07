@@ -7,7 +7,9 @@ const userSchema = mongoose.Schema(
     name: String,
     email: String,
     location: String,
-    courts: Array,
+    followingCourts: Array,
+    confirmedMatches: Array,
+    followingMatches: Array,
   },
   { collection: "userInfo" }
 );

@@ -8,8 +8,8 @@ const findUsers = async (req, res) => {
 
 const createUser = async (req, res) => {
   const user = req.body;
-  const newUser = await userDao.createUser(user);
-  res.json(newUser);
+  const status = await userDao.createUser(user);
+  res.json(status);
 };
 
 const updateUser = async (req, res) => {
