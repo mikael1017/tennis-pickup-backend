@@ -16,13 +16,14 @@ const findCourtsByCity = async (req, res) => {
 };
 
 const findCourtsByZip = async (req, res) => {
-	const zip = req.query["zip"];
+	// console.log("finding by zip");
+	const zip = req.params["zip"];
 	const courts = await courtsDao.findCourtsByZip(zip);
 	res.json(courts);
 };
 
 const findCourtsByState = async (req, res) => {
-	const state = req.query["state"];
+	const state = req.params["state"];
 	const courts = await courtsDao.findCourtsByState(state);
 	res.json(courts);
 };
