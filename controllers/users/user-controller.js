@@ -27,13 +27,13 @@ const UserController = (app) => {
 		const user = req.body;
 		console.log(user);
 		const foundUser = await usersDao.findUserByCredentials(
-			req.body.username,
-			req.body.password
+			user.username,
+			user.password
 		);
 		console.log(foundUser);
 		if (foundUser) {
 			req.session["currentUser"] = foundUser;
-			res.send(foundUser);
+			res.json(foundUser);
 		} else {
 			res.sendStatus(404);
 		}
@@ -55,7 +55,7 @@ const UserController = (app) => {
 
 	const register = async (req, res) => {
 		const user = req.body;
-		const foundUser = await usersDao.findUserByUsername(req.body.username);
+		const foundUser = await usersDao.findUserByUsername(user.username);
 		console.log(user);
 		if (foundUser) {
 			res.sendStatus(409);

@@ -12,7 +12,12 @@ const userSchema = mongoose.Schema(
 		followingCourts: Array,
 		confirmedMatches: Array,
 		followingMatches: Array,
-		role: String,
+		isAdmin: { type: Boolean, default: false },
+		role: {
+			type: String,
+			default: "player",
+			enum: ["admin", "player", "organization", "coach"],
+		},
 	},
 	{ collection: "userInfo" }
 );

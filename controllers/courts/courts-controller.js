@@ -19,7 +19,7 @@ const findCourtsByZip = async (req, res) => {
 	// console.log("finding by zip");
 	const zip = req.params["zip"];
 	const courts = await courtsDao.findCourtsByZip(zip);
-	res.json(courts);
+	res.send(courts);
 };
 
 const findCourtsByState = async (req, res) => {

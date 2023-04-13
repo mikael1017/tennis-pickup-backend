@@ -5,6 +5,7 @@ const requestSchema = mongoose.Schema(
 		_id: Number,
 		court: String,
 		requestedUserName: String,
+		requesteeUserName: String,
 		date: String,
 		time: String,
 		matchType: String,
