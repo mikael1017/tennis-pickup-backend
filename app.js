@@ -5,6 +5,7 @@ import CourtsController from "./controllers/courts/courts-controller.js";
 import session from "express-session";
 import SessionController from "./controllers/users/session-controller.js";
 import UserController from "./controllers/users/user-controller.js";
+import CourtFollowersController from "./controllers/courtFollowers/courtFollowers-controller.js";
 
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
@@ -37,6 +38,7 @@ if (process.env.ENV === "production") {
 SessionController(app);
 UserController(app);
 CourtsController(app);
+CourtFollowersController(app);
 console.log("Started the server");
 
 app.listen(process.env.PORT || 4000);

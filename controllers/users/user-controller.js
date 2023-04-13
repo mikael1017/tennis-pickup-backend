@@ -25,7 +25,7 @@ const UserController = (app) => {
 
 	const login = async (req, res) => {
 		const user = req.body;
-		console.log(user);
+		// console.log(user);
 		const foundUser = await usersDao.findUserByCredentials(
 			user.username,
 			user.password
