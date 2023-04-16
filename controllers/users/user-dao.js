@@ -3,6 +3,8 @@ import userModel from "./user-model.js";
 export const findAllUsers = async () => await userModel.find();
 export const findUserByUsername = async (username) => {
 	const user = await userModel.findOne({ username: username });
+	// console.log(user);
+	return user;
 };
 export const createUser = async (user) => await userModel.create(user);
 export const updateUser = async (cid, user) =>

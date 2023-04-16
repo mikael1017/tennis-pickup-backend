@@ -4,7 +4,8 @@ const courtFollowersSchema = mongoose.Schema(
 	{
 		_id: String,
 		courtId: String,
-		followers: Array,
+		followingPlayers: Array,
+		followingCoaches: Array,
 	},
 	{ collection: "courtFollowers" }
 );

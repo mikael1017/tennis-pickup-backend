@@ -8,7 +8,8 @@ const UserController = (app) => {
 
 	const findUserByUsername = async (req, res) => {
 		const userId = req.params.username;
-		const user = await usersDao.findUserByUsername(username);
+		const user = await usersDao.findUserByUsername(userId);
+		// console.log(user);
 		res.json(user);
 	};
 
