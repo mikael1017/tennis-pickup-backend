@@ -9,6 +9,7 @@ const userSchema = mongoose.Schema(
 		city: String,
 		phoneNumber: String,
 		skillLevel: String,
+		followingPeople: Array,
 		followingCourts: Array,
 		confirmedMatches: Array,
 		followingMatches: Array,
@@ -18,6 +19,7 @@ const userSchema = mongoose.Schema(
 			default: "player",
 			enum: ["admin", "player", "organization", "coach"],
 		},
+		profileImage: { data: Buffer, contentType: String },
 	},
 	{ collection: "userInfo" }
 );
