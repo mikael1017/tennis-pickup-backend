@@ -2,7 +2,7 @@
 import * as usersDao from "../users/user-dao.js";
 const UserController = (app) => {
 	const findAllUsers = async (req, res) => {
-		const users = await usesrDao.findAllUsers();
+		const users = await usersDao.findAllUsers();
 		res.json(users);
 	};
 
