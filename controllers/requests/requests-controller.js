@@ -1,35 +1,34 @@
-import * as requestsdao from "./requests-dao.js";
+import * as requestsDao from "./requests-dao.js";
 
-const matchrequestscontroller = (app) => {
-	app.get("/api/requests/court/:court", findrequestsbycourt);
-	app.post("/api/requests", postmatchrequest);
-	app.delete("/api/requests/:matchid", deletematchrequest);
-	app.put("/api/requests/:matchid", updatematchrequest);
+const MatchRequestController = (app) => {
+	app.post("/api/matches", postMatchRequest);
+	app.delete("/api/matches/:matchId", deleteMatchRequest);
+	app.put("/api/matches/:matchId", updateMatchRequest);
 };
 
 const findrequestsbycourt = async (req, res) => {
 	const courtname = req.params["court"];
-	const courts = await requestsdao.findrequestsbycourt(courtname);
+	const courts = await requestsDao.findrequestsbycourt(courtname);
 	res.json(courts);
 };
 
-const postmatchrequest = async (req, res) => {
+const postMatchRequest = async (req, res) => {
 	const request = req.body;
-	const status = requestsdao.postmatchrequest(request);
+	const status = requestsDao.postMatchRequest(request);
 	res.send(status);
 };
 
-const deletematchrequest = async (req, res) => {
-	const id = req.params["matchid"];
-	const status = requestsdao.deletematchrequest(id);
+const deleteMatchRequest = async (req, res) => {
+	const id = req.params["matchId"];
+	const status = requestsDao.deleteMatchRequest(id);
 	res.send(status);
 };
 
-const updatematchrequest = async (req, res) => {
-	const id = req.params["matchid"];
+const updateMatchRequest = async (req, res) => {
+	const id = req.params["matchId"];
 	const updates = req.body;
-	const status = requestsdao.updatematchrequest(id, updates);
+	const status = requestsDao.updateMatchRequest(id, updates);
 	res.send(status);
 };
 
-export default matchrequestscontroller;
+export default MatchRequestController;

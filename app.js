@@ -6,7 +6,7 @@ import session from "express-session";
 import SessionController from "./controllers/users/session-controller.js";
 import UserController from "./controllers/users/user-controller.js";
 import CourtFollowersController from "./controllers/courtFollowers/courtFollowers-controller.js";
-
+import MatchRequestController from "./controllers/requests/requests-controller.js";
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 mongoose.connect(
@@ -35,6 +35,7 @@ if (process.env.ENV === "production") {
 	app.set("trust proxy", 1); // trust first proxy
 	session.cookie.secure = true; // serve secure cookies
 }
+MatchRequestController(app);
 SessionController(app);
 UserController(app);
 CourtsController(app);

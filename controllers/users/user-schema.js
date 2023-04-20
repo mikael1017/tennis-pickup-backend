@@ -19,7 +19,8 @@ const userSchema = mongoose.Schema(
 			default: "player",
 			enum: ["admin", "player", "organization", "coach"],
 		},
-		profileImage: { data: Buffer, contentType: String },
+		profileImage: String,
+		coachLicense: { type: String, default: "none" },
 	},
 	{ collection: "userInfo" }
 );

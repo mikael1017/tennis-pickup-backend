@@ -6,6 +6,10 @@ export const findUserByUsername = async (username) => {
 	// console.log(user);
 	return user;
 };
+export const findUserById = async (userId) => {
+	const user = await userModel.findOne({ _id: userId });
+	return user;
+};
 export const createUser = async (user) => await userModel.create(user);
 export const updateUser = async (cid, user) =>
 	await userModel.updateOne({ _id: cid }, { $set: user });

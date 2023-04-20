@@ -1,4 +1,4 @@
-import requestModel from "./requets-model";
+import requestModel from "./requets-model.js";
 
 export const findRequestsByCourt = (courtName) =>
 	requestModel.find({ court: courtName });

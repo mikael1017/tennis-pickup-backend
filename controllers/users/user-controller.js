@@ -6,9 +6,16 @@ const UserController = (app) => {
 		res.json(users);
 	};
 
+	const findUserById = async (req, res) => {
+		const userId = req.params.id;
+		const user = await usersDao.findUserById(userId);
+		// console.log(user);
+		res.json(user);
+	};
+
 	const findUserByUsername = async (req, res) => {
-		const userId = req.params.username;
-		const user = await usersDao.findUserByUsername(userId);
+		const userName = req.params.username;
+		const user = await usersDao.findUserByUsername(userName);
 		// console.log(user);
 		res.json(user);
 	};
@@ -21,6 +28,13 @@ const UserController = (app) => {
 	const updateUser = async (req, res) => {
 		const userIdToUpdate = req.params.id;
 		const status = await usersDao.updateUser(userIdToUpdate, req.body);
+		if (
+			req.session["currentUser"] &&
+			req.session["currentUser"]._id === userIdToUpdate
+		) {
+			req.session["currentUser"] = req.body;
+		}
+		req.session.save();
 		res.json(status);
 	};
 
@@ -31,7 +45,7 @@ const UserController = (app) => {
 			user.username,
 			user.password
 		);
-		console.log(foundUser);
+		// console.log(foundUser);
 		if (foundUser) {
 			req.session["currentUser"] = foundUser;
 			res.json(foundUser);
@@ -83,6 +97,7 @@ const UserController = (app) => {
 
 	app.get("/api/users", findAllUsers);
 	app.get("/api/users/:username", findUserByUsername);
+	app.get("/api/users/:id", findUserById);
 	app.delete("/api/users/:username", deleteUserByUsername);
 	app.post("/api/users", createUser);
 	app.put("/api/users/:id", updateUser);

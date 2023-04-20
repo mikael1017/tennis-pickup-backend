@@ -16,7 +16,7 @@ const addFollower = async (req, res) => {
 	res.json(data);
 };
 
-const deleteFollower = async (req, res) => {
+const updateFollower = async (req, res) => {
 	const courtId = req.params["id"];
 	const follower = req.body.followerId;
 	const data = await courtFollowersDao.deleteFollower(courtId, follower);
@@ -26,6 +26,7 @@ const deleteFollower = async (req, res) => {
 const CourtFollowersController = (app) => {
 	app.get("/api/court/followers/:id", findCourtsById);
 	app.post("/api/court/followers/:id", addFollower);
+	app.put("/api/court/followers/:id", updateFollower);
 };
 
 export default CourtFollowersController;

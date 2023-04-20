@@ -6,6 +6,8 @@ const courtFollowersSchema = mongoose.Schema(
 		courtId: String,
 		followingPlayers: Array,
 		followingCoaches: Array,
+		followers: Array,
+		organization: String,
 	},
 	{ collection: "courtFollowers" }
 );
