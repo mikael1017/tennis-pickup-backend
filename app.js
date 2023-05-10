@@ -18,7 +18,7 @@ const app = express();
 app.use(
 	cors({
 		credentials: true,
-		origin: "https://master--astonishing-elf-6929de.netlify.app",
+		origin: "https://astonishing-elf-6929de.netlify.app",
 	})
 );
 app.use(express.json());
